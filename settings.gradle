@@ -1,0 +1,3 @@
+rootProject.name='CodingAndroid'
+include ':app'
+include ':keyboardchangedlistener'
