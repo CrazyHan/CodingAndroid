@@ -1,3 +1,4 @@
 rootProject.name='CodingAndroid'
 include ':app'
 include ':keyboardRelated'
+include ':schemego'

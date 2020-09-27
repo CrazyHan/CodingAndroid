@@ -1,0 +1,205 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <View
+            android:id="@+id/divider"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@android:color/black" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1">
+
+            <Button
+                android:id="@+id/btn_copy"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="30dp"
+                android:text="复制到剪切板"
+                android:textAllCaps="false"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/btn_launch"
+                app:layout_constraintHorizontal_chainStyle="packed"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <Button
+                android:id="@+id/btn_launch"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="GoLink启动"
+                android:textAllCaps="false"
+                app:layout_constraintBottom_toBottomOf="@id/btn_copy"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/btn_copy"
+                app:layout_constraintTop_toTopOf="@id/btn_copy" />
+
+            <EditText
+                android:id="@+id/et_go"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:hint="输入go值"
+                android:minWidth="80dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <LinearLayout
+                android:id="@+id/sddd"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layout_constraintTop_toBottomOf="@+id/et_go">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="key:" />
+                <EditText
+                    android:id="@+id/et_link"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="10dp"
+                    android:hint="输入link参数名"
+                    android:textSize="13sp"
+                    android:maxWidth="100dp"
+                    app:layout_constraintStart_toEndOf="@+id/et_go" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="value:" />
+                <EditText
+                    android:id="@+id/et_link_value"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="10dp"
+                    android:hint="输入link参数值"
+                    android:textSize="13sp"
+                    android:maxWidth="100dp"
+                    app:layout_constraintStart_toEndOf="@+id/et_link"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <Button
+                    android:id="@+id/confirm_add"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="添加"
+                    app:layout_constraintStart_toEndOf="@+id/et_link_value"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+
+            </LinearLayout>
+
+            <androidx.core.widget.NestedScrollView
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintBottom_toTopOf="@+id/radio_platform"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/sddd">
+
+                <LinearLayout
+                    android:id="@+id/params_container"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    app:layout_constraintBottom_toTopOf="@+id/radio_platform" />
+            </androidx.core.widget.NestedScrollView>
+            <RadioGroup
+                android:id="@+id/radio_platform"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:orientation="horizontal"
+                app:layout_constraintBottom_toTopOf="@id/btn_launch"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent">
+
+                <RadioButton
+                    android:id="@+id/radio_jiayuan"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:checked="true"
+                    android:text="佳缘" />
+
+                <RadioButton
+                    android:id="@+id/radio_baihe"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="百合" />
+
+                <RadioButton
+                    android:id="@+id/radio_union"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="融合" />
+
+                <RadioButton
+                    android:id="@+id/radio_abroad"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="海外" />
+
+                <RadioButton
+                    android:id="@+id/radio_miyou"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="觅优" />
+            </RadioGroup>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="0.5">
+
+            <Button
+                android:id="@+id/btn_url_launch"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="30dp"
+                android:text="Url启动"
+                android:textAllCaps="false"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/et_url" />
+
+            <EditText
+                android:id="@+id/et_url"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:hint="输入跳转URL"
+                android:inputType="textUri"
+                android:maxWidth="260dp"
+                android:minWidth="150dp"
+                app:layout_constraintBottom_toTopOf="@+id/btn_url_launch"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_chainStyle="packed" />
+
+            <ImageView
+                android:id="@+id/iv_url_clear"
+                android:layout_width="16dp"
+                android:layout_height="16dp"
+                android:layout_marginStart="16dp"
+                android:src="@mipmap/lib_framework_common_dialog_close"
+                app:layout_constraintBottom_toBottomOf="@id/et_url"
+                app:layout_constraintStart_toEndOf="@id/et_url"
+                app:layout_constraintTop_toTopOf="@+id/et_url" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </LinearLayout>
+</androidx.core.widget.NestedScrollView>
