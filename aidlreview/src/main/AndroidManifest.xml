@@ -11,6 +11,7 @@
         android:theme="@style/AppTheme">
         <service
             android:name=".BookService"
+            android:process=".remote"
             android:enabled="true"
             android:exported="true"></service>
 

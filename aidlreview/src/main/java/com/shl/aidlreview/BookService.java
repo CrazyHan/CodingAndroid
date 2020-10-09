@@ -34,7 +34,7 @@ public class BookService extends Service {
 
             @Override
             public List<Book> getBooks() throws RemoteException {
-                Log.i("AIDLReview", "Service 添加书进来" + books.toString());
+                Log.i("AIDLReview", "Service 读取" + books.toString());
                 return books;
             }
         };
