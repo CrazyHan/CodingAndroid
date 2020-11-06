@@ -1,3 +1,6 @@
+include ':libBadgeView'
+include ':badgeview'
+include ':jetpack'
 rootProject.name='CodingAndroid'
 include ':app'
 include ':keyboardRelated'
