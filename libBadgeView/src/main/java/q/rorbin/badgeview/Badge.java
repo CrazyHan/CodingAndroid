@@ -33,6 +33,10 @@ public interface Badge {
 
     int getBadgeBackgroundColor();
 
+    Badge setBadgeHaloColor(int color);
+
+
+
     Badge setBadgeBackground(Drawable drawable);
 
     Badge setBadgeBackground(Drawable drawable, boolean clip);

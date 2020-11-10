@@ -16,6 +16,7 @@ import android.os.Parcelable;
 import android.text.TextPaint;
 import android.text.TextUtils;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.util.SparseArray;
 import android.view.Gravity;
 import android.view.MotionEvent;
@@ -36,7 +37,9 @@ import java.util.List;
 public class QBadgeView extends View implements Badge {
     protected int mColorBackground;
     protected int mColorBackgroundBorder;
+    protected int mColorBackgroundHalo;//最外面加一个环
     protected int mColorBadgeText;
+
     protected Drawable mDrawableBackground;
     protected Bitmap mBitmapClip;
     protected boolean mDrawableBackgroundClip;
@@ -312,15 +315,19 @@ public class QBadgeView extends View implements Badge {
             float startCircleRadius = mDefalutRadius * (1 - MathUtil.getPointDistance
                     (mRowBadgeCenter, mDragCenter) / mFinalDragDistance);
             if (mDraggable && mDragging) {
+                Log.i("QBadgeView", "拖拉。。。。");
+
                 mDragQuadrant = MathUtil.getQuadrant(mDragCenter, mRowBadgeCenter);
                 showShadowImpl(mShowShadow);
                 if (mDragOutOfRange = startCircleRadius < DisplayUtil.dp2px(getContext(), 1.5f)) {
                     updataListener(OnDragStateChangedListener.STATE_DRAGGING_OUT_OF_RANGE);
                     drawBadge(canvas, mDragCenter, badgeRadius);
+                    drawHalo(canvas, mBadgeCenter,badgeRadius);
                 } else {
                     updataListener(OnDragStateChangedListener.STATE_DRAGGING);
                     drawDragging(canvas, startCircleRadius, badgeRadius);
                     drawBadge(canvas, mDragCenter, badgeRadius);
+                    drawHalo(canvas, mBadgeCenter,badgeRadius);
                 }
             } else {
                 findBadgeCenter();
@@ -341,7 +348,7 @@ public class QBadgeView extends View implements Badge {
         mBadgeBackgroundBorderPaint.setStrokeWidth(mBackgroundBorderWidth);
         mBadgeTextPaint.setColor(mColorBadgeText);
         mBadgeTextPaint.setTextAlign(Paint.Align.CENTER);
-
+//        mBadgeHaloPaint.setColor(mColor);
     }
 
     private void drawDragging(Canvas canvas, float startRadius, float badgeRadius) {
@@ -400,8 +407,13 @@ public class QBadgeView extends View implements Badge {
         }
     }
 
+    /**
+     * 画外面的环
+     */
     private void drawHalo(Canvas canvas, PointF center, float radius){
-
+        if (center.x == -1000 && center.y == -1000) {
+            return;
+        }
     }
 
     private void drawBadge(Canvas canvas, PointF center, float radius) {
@@ -409,11 +421,14 @@ public class QBadgeView extends View implements Badge {
             return;
         }
         if (mBadgeText.isEmpty() || mBadgeText.length() == 1) {
+            Log.i("QBadgeView", "0");
+
             mBadgeBackgroundRect.left = center.x - (int) radius;
             mBadgeBackgroundRect.top = center.y - (int) radius;
             mBadgeBackgroundRect.right = center.x + (int) radius;
             mBadgeBackgroundRect.bottom = center.y + (int) radius;
             if (mDrawableBackground != null) {
+                Log.i("QBadgeView", "1 mDrawableBackground");
                 drawBadgeBackground(canvas);
             } else {
                 canvas.drawCircle(center.x, center.y, radius, mBadgeBackgroundPaint);
@@ -428,6 +443,7 @@ public class QBadgeView extends View implements Badge {
             mBadgeBackgroundRect.bottom = center.y + (mBadgeTextRect.height() / 2f + mBadgePadding * 0.5f);
             radius = mBadgeBackgroundRect.height() / 2f;
             if (mDrawableBackground != null) {
+                Log.i("QBadgeView", "2 mDrawableBackground");
                 drawBadgeBackground(canvas);
             } else {
                 canvas.drawRoundRect(mBadgeBackgroundRect, radius, radius, mBadgeBackgroundPaint);
@@ -703,6 +719,11 @@ public class QBadgeView extends View implements Badge {
     @Override
     public int getBadgeBackgroundColor() {
         return mColorBackground;
+    }
+
+    @Override
+    public Badge setBadgeHaloColor(int color) {
+        return null;
     }
 
     @Override
