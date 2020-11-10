@@ -1,3 +1,4 @@
+include ':leakCanary'
 include ':libBadgeView'
 include ':badgeview'
 include ':jetpack'
