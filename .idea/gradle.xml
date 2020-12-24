@@ -17,6 +17,7 @@
             <option value="$PROJECT_DIR$/keyboardRelated" />
             <option value="$PROJECT_DIR$/leakCanary" />
             <option value="$PROJECT_DIR$/libBadgeView" />
+            <option value="$PROJECT_DIR$/lifecycletest" />
             <option value="$PROJECT_DIR$/schemego" />
           </set>
         </option>

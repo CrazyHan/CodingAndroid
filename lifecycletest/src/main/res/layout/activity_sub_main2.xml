@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".SubMainActivity2">
+    <TextView
+        android:id="@+id/sub_text"
+        android:layout_width="100dp"
+        android:layout_height="50dp"
+        android:textSize="40sp"
+        android:textColor="@color/design_default_color_error"
+        />
+
+    <Button
+        android:id="@+id/next_page"
+        android:layout_width="100dp"
+        android:layout_height="50dp"
+        android:textSize="40sp"
+        android:text="下一页"/>
+
+    <Button
+        android:id="@+id/goto_main1"
+        android:layout_width="100dp"
+        android:layout_height="50dp"
+        android:textSize="40dp"
+        android:text="MainActivity1" />
+
+</LinearLayout>
